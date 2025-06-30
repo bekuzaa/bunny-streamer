@@ -2,12 +2,12 @@ ARG RESTREAMER_UI_IMAGE=datarhei/restreamer-ui:latest
 ARG CORE_IMAGE=datarhei/base:alpine-core-latest
 ARG FFMPEG_IMAGE=datarhei/base:alpine-ffmpeg-latest
 
-FROM $RESTREAMER_UI_IMAGE AS restreamer-ui
-FROM $CORE_IMAGE AS core
-FROM $FFMPEG_IMAGE
+FROM ${RESTREAMER_UI_IMAGE} AS restreamer_ui
+FROM ${CORE_IMAGE} AS core
+FROM ${FFMPEG_IMAGE}
 
 COPY --from=core /core /core
-COPY --from=restreamer-ui /ui/build /core/ui
+COPY --from=restreamer_ui /ui/build /core/ui
 
 ADD https://raw.githubusercontent.com/datarhei/restreamer/2.x/CHANGELOG.md /core/ui/CHANGELOG.md
 COPY ./run.sh /core/bin/run.sh
@@ -24,7 +24,9 @@ EXPOSE 8080/tcp
 EXPOSE 8181/tcp
 EXPOSE 1935/tcp
 EXPOSE 1936/tcp
+EXPOSE 5000/udp
 EXPOSE 6000/udp
+EXPOSE 10000/udp
 
 VOLUME ["/core/data", "/core/config"]
 ENTRYPOINT ["/core/bin/run.sh"]
