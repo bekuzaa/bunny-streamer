@@ -1,4 +1,4 @@
-name: 'Build restreamer latest images'
+name: 'Build bunny-streamer latest images'
 
 on:
     workflow_dispatch:
