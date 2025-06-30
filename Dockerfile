@@ -1,13 +1,13 @@
-ARG RESTREAMER_UI_IMAGE=bekuzaa/bunny-streamer-ui:latest
+ARG BUNNYSTREAMER_UI_IMAGE=bekuzaa/bunny-streamer-ui:latest
 ARG CORE_IMAGE=datarhei/base:alpine-core-latest
 ARG FFMPEG_IMAGE=datarhei/base:alpine-ffmpeg-latest
 
-FROM ${RESTREAMER_UI_IMAGE} AS restreamer_ui
+FROM ${BUNNYRESTREAMER_UI_IMAGE} AS bunny_streamer_ui
 FROM ${CORE_IMAGE} AS core
 FROM ${FFMPEG_IMAGE}
 
 COPY --from=core /core /core
-COPY --from=restreamer_ui /ui/build /core/ui
+COPY --from=bunny_streamer_ui /ui/build /core/ui
 
 ADD https://raw.githubusercontent.com/datarhei/restreamer/2.x/CHANGELOG.md /core/ui/CHANGELOG.md
 COPY ./run.sh /core/bin/run.sh
