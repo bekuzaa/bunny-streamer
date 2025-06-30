@@ -1,4 +1,4 @@
-name: 'Build restreamer dev images'
+name: 'Build bunny-streamer dev images'
 
 on:
     workflow_dispatch:
@@ -71,7 +71,7 @@ jobs:
                   context: .
                   file: ./Dockerfile
                   build-args: |
-                      BUNNY_STREAMER_UI_IMAGE=bekuzaa/bunny-streamer-ui:${{ matrix.ui }}
+                      BUNNYSTREAMER_UI_IMAGE=bekuzaa/bunny-streamer-ui:${{ matrix.ui }}
                       CORE_IMAGE=datarhei/base:${{ matrix.core }}
                       FFMPEG_IMAGE=datarhei/base:${{ matrix.ffmpeg }}
                   platforms: ${{ matrix.platforms }}
