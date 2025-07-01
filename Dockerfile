@@ -2,7 +2,7 @@ ARG BUNNYSTREAMER_UI_IMAGE=bekuzaa/bunny-streamer-ui:latest
 ARG CORE_IMAGE=datarhei/base:alpine-core-latest
 ARG FFMPEG_IMAGE=datarhei/base:alpine-ffmpeg-latest
 
-FROM ${BUNNYRESTREAMER_UI_IMAGE} AS bunny_streamer_ui
+FROM ${BUNNYSTREAMER_UI_IMAGE} AS bunny_streamer_ui
 FROM ${CORE_IMAGE} AS core
 FROM ${FFMPEG_IMAGE}
 
